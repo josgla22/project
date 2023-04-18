@@ -22,7 +22,7 @@
                 <i class="fa fa-caret-down"></i>
             </button>
             <div class="dropdown-content">
-                <a href="#">Steps</a>
+                <a href="steps.php">Steps</a>
                 <a href="#">Walked Distance</a>
                 <a href="#">Cycled Distance</a>
             </div>
