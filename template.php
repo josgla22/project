@@ -23,8 +23,12 @@
             </button>
             <div class="dropdown-content">
                 <a href="steps.php">Steps</a>
-                <a href="#">Walked Distance</a>
-                <a href="#">Cycled Distance</a>
+                <a href="walked_distance.php">Walked Distance</a>
+                <a href="cycled_distance.php">Cycled Distance</a>
+                <a href="cycled_distance.php">Cycled Distance</a>
+                <a href="cycled_distance.php">Cycled Distance</a>
+                <a href="sleepingHours.php">Cycled Distance</a>
+                <a href="goal.php">Workout Goals</a>
             </div>
         </div> 
         <a href="index.php">HOME</a>
