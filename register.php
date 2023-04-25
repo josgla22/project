@@ -1,10 +1,15 @@
 <?php
-    include('template.php');
-    if (isset($_POST['username']) and isset($_POST['password'])) {
-        $query = <<<END
-        INSERT INTO users(username,password,email,fname,lname)
-            VALUES('{$_POST['username']}','{$_POST['password']}','
-                {$_POST['email']}','{$_POST['fname']}','{$_POST['lname']}')
+include('template.php');
+$conn = new mysqli($host, $user, $pwd, $db);
+if (isset($_POST['f_name']) && isset($_POST['l_name']) && isset($_POST['email']) 
+    && isset($_POST['pwd']) && isset($_POST['gender'])) {
+
+    $is_admin = isset($_POST['is_admin']) ? 1 : 0;
+
+    $query = <<<END
+        INSERT INTO user(l_name, f_name, email, pwd, gender, is_admin) 
+        VALUES('{$_POST['l_name']}', '{$_POST['f_name']}', '{$_POST['email']}', 
+            '{$_POST['pwd']}', '{$_POST['gender']}', '{$is_admin}');
 END;
         if ($stmt = $conn->query($query) !== TRUE) {
             die("Could not query database" . $conn->errno . " : " . $conn->error);
@@ -12,16 +17,27 @@ END;
     }
 }
 $content = <<<END
-<form method="post" action="register.php">
-<input type = "text" name="username" placeholder="username" ><br>
-<input type="password" name="password" placeholder="password"><br>
-<input type="text" name="email" placeholder="email"><br>
-<input type="text" name="fname" placeholder="first name"><br>
-<input type="text" name="lname" placeholder="last name"><br>
-<input type="submit" value="Register">
-<input type="Reset" value="reset">
-</form>
 END;
+echo $navigation;
 echo $content;
+?>
+<div class="reg">
+    <h1>Sign Up</h1>
+    <form method="post" action="register.php">
+        <input type="text" name="f_name" placeholder="First name"><br>
+        <input type="text" name="l_name" placeholder="Last name"><br>
+        <input type="text" name="email" placeholder="Email"><br>
+        <input type="password" name="pwd" placeholder="Password"><br>
+        <label>Gender:</label>
+        <input type="radio" name="gender" value="M">Male
+        <input type="radio" name="gender" value="F">Female<br>
+        <input type="radio" name="gender" value="O">Others<br>
+        <label>Admin:</label>
+        <input type="checkbox" name="is_admin" value="1"><br>
+        <input type="submit" value="Register">
+        <input type="reset" value="Reset">
+    </form>
+</div>
+<?php
 include('footer.php');
 ?>

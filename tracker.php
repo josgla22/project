@@ -1,0 +1,40 @@
+<?php
+include('template.php');
+$content = <<<END
+END;
+echo $navigation;
+echo $content;
+?>
+<?php
+include('steps.php');
+?>
+<?php
+include('cycled_distance.php');
+?>
+<?php
+include('weight.php');
+?>
+<?php
+include('walked_distance.php');
+?>
+<?php
+include('cycled_distance.php');
+?>
+<?php
+include('bedTime.php');
+?>
+<?php
+include('getUpTime.php');
+?>
+<?php
+include('daytimeNaps.php');
+?>
+<?php
+include('sleepingHours.php');
+?>
+<?php
+include('calorie.php');
+?>
+<?php
+include('footer.php');
+?>

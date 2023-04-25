@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Send</title>
-    <link rel="stylesheet" property="stylesheet" type="text/css" href="css/stylesheet.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" property="stylesheet" type="text/css" href="css/stylesheet.css" />
 </head>
 <body>
     <?php
@@ -17,24 +17,11 @@
     $mysqli = new mysqli($host, $user, $pwd, $db);
     $navigation = <<<END
     <nav class="topnav">
-        <div class="dropdown">
-            <button class="dropbtn">TRACKER 
-                <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-content">
-                <a href="steps.php">Steps</a>
-                <a href="walked_distance.php">Walked Distance</a>
-                <a href="cycled_distance.php">Cycled Distance</a>
-                <a href="cycled_distance.php">Cycled Distance</a>
-                <a href="cycled_distance.php">Cycled Distance</a>
-                <a href="sleepingHours.php">Cycled Distance</a>
-                <a href="goal.php">Workout Goals</a>
-            </div>
-        </div> 
+        <a href="tracker.php">TRACKER</a>
         <a href="index.php">HOME</a>
         <a href="about.php">ABOUT US</a>
         <a href="register.php">REGISTER</a>
-        <a href="register.php">CONTACT</a>
+        <a href="contact.php">CONTACT</a>
         <div class="search-container">
             <form action="/action_page.php">
                 <input type="text" placeholder="Search.." name="search">
@@ -43,15 +30,17 @@
         </div>
 END;
 
-    if (isset($_SESSION['userId']))
+    if (isset($_SESSION['user_id']))
     {
         $navigation .= <<<END
         <a href="logout.php">LOGOUT</a>
+        <a href="myHealth.php">MY PAGE</a>
+
 END;
-        if ($_SESSION['username'] === 'admin') {
-            $navigation .= '<a href="add_product.php">Add Product</a>';
+        if ($_SESSION['is_admin'] === '1') {
+            $navigation .= '';
         }
-        $navigation .= 'Logged in as ' . $_SESSION['username'];
+        $navigation .= 'Logged in as ' . $_SESSION['email'];
     }
     else
     {
@@ -61,3 +50,12 @@ END;
     }
     $navigation .= '</nav>';
     ?>
+ <script>
+    const form = document.getElementById('search-form');
+    form.addEventListener('submit', (event) => {
+        event.preventDefault(); // prevent the default form submission
+        const query = form.search.value; // get the search query from the input field
+          // send the search query to the server using fetch or XMLHttpRequest
+          // display the search results on the page
+    });
+ </script>

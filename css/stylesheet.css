@@ -86,38 +86,24 @@ overflow: hidden;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
 }
-/* Links inside the dropdown */
-.dropdown-content a {
-  float: none;
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  text-align: left;
-}
-  
-/* Add a grey background color to dropdown links on hover */
-.dropdown-content a:hover {
-  background-color: #ddd;
-}
-  
-/* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {
-  display: block;
-}
 .box {
   border: 1px solid #000000; /* add a 1px solid border with gray color */
-  background-color: rgb(52, 100, 151);
+  background-color: rgb(188, 188, 180); /* change the background color to beige */
   padding: 10px; /* add 10px padding to the box */
   border-radius: 5px; /* add a 5px border radius to the corners of the box */
-  width: 300px; /* set the width of the box to 300px */
+  width: calc(33.33% - 20px); /* set the width of the box to one-third of the container minus 20px for margin */
   float: left; /* float the box to the left to position it beside other elements */
   margin-right: 20px; /* add a 20px margin to the right of the box */
+  box-sizing: border-box; /* include padding and border in the box size calculation */
 }
 .wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100vh;
+}
+.about {
+  text-align: left;
   height: 100vh;
 }
 .centered {

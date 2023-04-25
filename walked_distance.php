@@ -17,15 +17,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     mysqli_close($conn);
 }
-$content = <<<END
-<h1>Add distance</h1>
-<form method="post" action="walked_distance.php">
+?>
+<div class="box">
+    <h1>Add distance</h1>
+    <form method="post" action="walked_distance.php">
     <input type="text" name="distance" placeholder="Kilometers"><br>
     <input type="submit" value="Add distance">
     <input type="reset" value="Reset">
-</form>
-END;
-echo $navigation;
-echo $content;
+    </form>
+ </div>
+<?php
 include('footer.php');
 ?>

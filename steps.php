@@ -17,17 +17,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     mysqli_close($conn);
 }
-$content = <<<END
-END;
-echo $navigation;
-echo $content;
+echo '<div class="box">';
+echo '<h1>Add steps</h1>';
+echo '<form method="post" action="steps.php">';
+echo '<input type="text" name="steps" placeholder="Steps"><br>';
+echo '<input type="submit" value="Add steps">';
+echo '<input type="reset" value="Reset">';
+echo '</form>';
+echo '</div>';
 include('footer.php');
 ?>
-<div class="box">
-    <h1>Add steps</h1>
-    <form method="post" action="steps.php">
-        <input type="text" name="steps" placeholder="Steps"><br>
-        <input type="submit" value="Add steps">
-        <input type="reset" value="Reset">
-    </form>
-</div>
