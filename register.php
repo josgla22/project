@@ -1,5 +1,6 @@
 <?php
-include('template.php');
+include_once('template.php');
+include_once('accessLog.php');
 $conn = new mysqli($host, $user, $pwd, $db);
 if (isset($_POST['f_name']) && isset($_POST['l_name']) && isset($_POST['email']) 
     && isset($_POST['pwd']) && isset($_POST['gender'])) {
@@ -21,7 +22,8 @@ END;
 echo $navigation;
 echo $content;
 ?>
-<div class="reg">
+<div class="form-container">
+    <form class="login-form" action="register.php" method="post">
     <h1>Sign Up</h1>
     <form method="post" action="register.php">
         <input type="text" name="f_name" placeholder="First name"><br>
@@ -30,13 +32,10 @@ echo $content;
         <input type="password" name="pwd" placeholder="Password"><br>
         <label>Gender:</label>
         <input type="radio" name="gender" value="M">Male
-        <input type="radio" name="gender" value="F">Female<br>
-        <input type="radio" name="gender" value="O">Others<br>
-        <label>Admin:</label>
-        <input type="checkbox" name="is_admin" value="1"><br>
-        <input type="submit" value="Register">
-        <input type="reset" value="Reset">
-    </form>
+        <input type="radio" name="gender" value="F">Female
+        <input type="radio" name="gender" value="O">Others
+    <button type="submit">Register</button><br> 
+  </form>
 </div>
 <?php
 include('footer.php');

@@ -1,5 +1,6 @@
 <?php
-include('template.php');
+include_once('template.php');
+include_once('accessLog.php');
 if (isset($_POST['email']) && isset($_POST['password'])) {
     $email = $mysqli->real_escape_string($_POST['email']);
     $password = $mysqli->real_escape_string($_POST['password']);
@@ -25,11 +26,19 @@ END;
 echo $navigation;
 echo $content;
 ?>
-<form action="login.php" method="post">
-<input type="text" name="email" placeholder="Email">
-<input type="password" name="password" placeholder="Password">
-<input type="submit" value="Login">
-</form>
+<div class="form-container">
+  <form class="login-form" action="login.php" method="post">
+    <div class="input-wrapper">
+    <h1>SIGN IN</h1>
+      <input type="text" name="email" placeholder="Email">
+    </div>
+    <div class="input-wrapper">
+      <input type="password" name="password" placeholder="Password">
+    </div>
+    <button type="submit">Log in</button><br>
+    <a href="register.php"><h2>Don't have an account?</h2></a>
+  </form>
+</div>
 <?php
 include('footer.php');
 ?>

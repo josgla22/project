@@ -1,83 +1,48 @@
 /* Add a black background color to the top navigation bar */
 .topnav {
   overflow: hidden;
-  background-color: #e9e9e9;
+  background-color: #ffffff;
 }  
 .topnav a {
   float: left;
   display: block;
-  color: black;
+  color: rgb(114, 167, 247);
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
-  font-size: 17px;
+  font-size: 22px;
+  font-family: "Georgia", serif;
 }
 .topnav a:hover {
-  background-color: #ddd;
-  color: black;
+  background-color: #ffffff;
+  color: rgb(191, 242, 255);
 } 
 .topnav a.active {
-  background-color: #2196F3;
+  background-color: #4ecaff;
   color: white;
 }  
-.topnav .search-container {
-  float: right;
-} 
-.topnav input[type=text] {
-  padding: 6px;
-  margin-top: 8px;
-  font-size: 17px;
-  border: none;
-} 
-.topnav .search-container button {
-  float: right;
-  padding: 6px 10px;
-  margin-top: 8px;
-  margin-right: 16px;
-  background: #ddd;
-  font-size: 17px;
-  border: none;
-  cursor: pointer;
-}
-.topnav .search-container button:hover {
-  background: #ccc;
-}  
-@media screen and (max-width: 600px) {
-  .topnav .search-container {
-    float: none;
-  }
-  .topnav a, .topnav input[type=text], .topnav .search-container button {
-    float: none;
-    display: block;
-    text-align: left;
-    width: 100%;
-    margin: 0;
-    padding: 14px;
-  }
-  .topnav input[type=text] {
-    border: 1px solid #ccc;  
-  }
-}
 .dropdown {
-float: left;
-overflow: hidden;
+  float: left;
+  overflow: hidden;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 17px;
+
 }
 /* Dropdown button */
 .dropdown .dropbtn {
   font-size: 17px; 
   border: none;
   outline: none;
-  color: rgb(0, 0, 0);
+  color: rgb(145, 179, 219);
   padding: 14px 16px;
   background-color: inherit;
   font-family: 'Times New Roman', Times, serif; /* Important for vertical align on mobile phones */
   margin: 0; /* Important for vertical align on mobile phones */
 }
-/* Add a red background color to navbar links on hover */
 .navbar a:hover, .dropdown:hover .dropbtn {
-  background: #ddd;
+  background: hsl(0, 0%, 100%);
+  color: rgb(191, 242, 255);
 }
-/* Dropdown content (hidden by default) */
 .dropdown-content {
   display: none;
   position: absolute;
@@ -86,15 +51,20 @@ overflow: hidden;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
 }
+.dropdown:hover .dropdown-content {
+  display: block;
+}
 .box {
-  border: 1px solid #000000; /* add a 1px solid border with gray color */
-  background-color: rgb(188, 188, 180); /* change the background color to beige */
-  padding: 10px; /* add 10px padding to the box */
-  border-radius: 5px; /* add a 5px border radius to the corners of the box */
-  width: calc(33.33% - 20px); /* set the width of the box to one-third of the container minus 20px for margin */
-  float: left; /* float the box to the left to position it beside other elements */
-  margin-right: 20px; /* add a 20px margin to the right of the box */
-  box-sizing: border-box; /* include padding and border in the box size calculation */
+  width: 300px;
+  height: 150px;
+  border: 1px;
+  background-color: #eee;
+  padding: 10px;
+  margin: 20px;
+  border-radius: 10px;
+  opacity: 0.8;
+  float: left;
+  box-sizing: border-box;
 }
 .wrapper {
   display: flex;
@@ -103,8 +73,37 @@ overflow: hidden;
   height: 100vh;
 }
 .about {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  background-color: #ffffff;
+}
+.about h1 {
+  font-size: 60px;
+  font-family: "Times New Roman", serif;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.about p {
+  font-size: 20px;
+  font-family: "Times New Roman", serif;
+  margin-bottom: 10px;
+}
+.about button {
+  margin-top: 20px;
+}
+.about table {
+  width: 100%;
+  height: 100%;
+  border-collapse: collapse;
+}
+.about td {
+  vertical-align: middle;
+}
+.tracker {
   text-align: left;
-  height: 100vh;
 }
 .centered {
   text-align: center;
@@ -112,19 +111,72 @@ overflow: hidden;
 }
 h1 {
   font-size: 60px;
-  font-family: "Times New Roman", serif;
+  font-family: "Georgia", serif;
+  font-weight: normal;
+}
+.heading1 {
+  font-size: 25px;
+  font-family: "Georgia", serif;
+  font-weight: normal;
 }
 p {
   font-size: 20px;
-  font-family: "Times New Roman", serif;
+  font-family: "Georgia", serif;
 }
-button {
-  font-family: 'Times New Roman', Times, serif, sans-serif;
+button,
+button:visited {
+  font-family: "Georgia", serif;
   font-size: 16px;
   padding: 10px 20px;
-  background-color: #656361;
+  background-color: #64beff;
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  text-decoration: none;
+  align-items: center;
 }
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #c3e4ff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);
+  max-width: 500px;
+  margin: 0 auto;
+}
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+
+.login-form h2 {
+  margin-bottom: 20px;
+  font-size: 15px;
+  text-decoration: none;
+}
+.login-form h1 {
+  font-size: 40px;
+  font-family: "Georgia", serif;
+}
+.login-form p {
+  font-size: 15px;
+  font-family: "Georgia", serif;
+}
+.login-form .input-wrapper {
+  margin-bottom: 10px;
+  width: 100%;
+}
+.login-form input {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+/* Skapa en klass för tabellerna */

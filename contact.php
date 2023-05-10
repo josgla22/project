@@ -1,5 +1,6 @@
 <?php
-include('template.php');
+include_once('template.php');
+include_once('accessLog.php');
 $conn = new mysqli($host, $user, $pwd, $db);
     if (isset($_POST['username']) and isset($_POST['password'])) {
         $query = <<<END
@@ -35,39 +36,48 @@ END;
 echo $navigation;
 echo $content;
 ?>
-<div class="feedback">
-    <h1>Submit you feedback</h1>
-    <h2>If you have any complaints, please contact us</h2>
+<div class="login-form">
+    <h1>Submit your feedback</h1>
+    <p>If you have any complaints, please contact us in the form below:</p>
     <form method="post">
-        <div class="mb-3">
-            <label for="fname">First name:</label><br>
-            <input type="text" id="fname" name="fname"><br>
-            <div class="mb-3">
-            <label for="lname">Last name:</label><br>
-            <input type="text" id="lname" name="lname"><br><br>
-            <textarea name="msg" placeholder="Feedback" style="resize: none;" required></textarea><br><br>
-            <label for="email">Email address:</label><br>
-            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-            <input type="email" name="email" required placeholder="Enter a valid email address"><br><br>
+        <div class="input-wrapper">
+            <input type="text" id="fname" name="fname" placeholder="Firs tname"><br>
         </div>
-        <input type="radio" id="male" name="gender" value="male">
-        <label for="male">Male</label><br>
-        <input type="radio" id="female" name="gender" value="female">
-        <label for="female">Female</label><br>
-        <input type="radio" id="other" name="gender" value="other">
-        <label for="other">Other</label><br><br>
-        <label for="website">How did you find us?</label>
-        <select id="website" name="website">
-        <option value="empty"></option>
-        <option value="instagram">Instagram</option>
-        <option value="facebook">Facebook</option>
-        <option value="google">Google</option>
-        <option value="tiktok">TikTok</option>
-        <option value="other">Other</option></select><br><br>
-        <label for="msg">If you selected other:</label><br>
-        <textarea name="msg" placeholder="Message" style="resize: none;" required></textarea><br><br>
-        <input type="submit" value="Submit">
-        <input type="reset" value="Reset">
+        <div class="input-wrapper">
+            <input type="text" id="lname" name="lname" placeholder="Last name"><br>
+        </div>
+        <div class="input-wrapper">
+            <input type="email" name="email" required placeholder="Email"><br>
+        </div>
+        <div class="input-wrapper">
+            <textarea name="msg" placeholder="Feedback" style="resize: none;" required></textarea><br>
+        </div>
+        <div class="input-wrapper">
+            <label for="gender">Gender:</label><br>
+            <input type="radio" id="male" name="gender" value="male">
+            <label for="male">Male</label>
+            <input type="radio" id="female" name="gender" value="female">
+            <label for="female">Female</label>
+            <input type="radio" id="other" name="gender" value="other">
+            <label for="other">Other</label><br>
+        </div>
+        <div class="input-wrapper">
+            <label for="website">How did you find us?</label><br>
+            <select id="website" name="website">
+                <option value="empty"></option>
+                <option value="instagram">Instagram</option>
+                <option value="facebook">Facebook</option>
+                <option value="google">Google</option>
+                <option value="tiktok">TikTok</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+        <div class="input-wrapper">
+            <label for="msg_other">If you selected other:</label><br>
+            <textarea name="msg_other" placeholder="Message" style="resize: none;" required></textarea>
+        </div>
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button><br><br>
     </form>
 </div>
     <span></span>

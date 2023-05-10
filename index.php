@@ -1,5 +1,6 @@
 <?php
-include('template.php');
+include_once('template.php');
+include_once('accessLog.php');
 $content = <<<END
 END;
 echo $navigation;
@@ -7,7 +8,8 @@ echo $content;
 ?>
 <div class="wrapper">
     <div class="centered">
-        <h1>HeartBeat</h1><br><br>
+        <img src="img/logga.png" alt="HeartBeat logo">
+        <br><br>
         <p>Welcome to our health app!<br>
         We're here to help you live a healthier life.
         Register now and take control of your health. With our app, you can track your activity, such as steps, calories, and distance.

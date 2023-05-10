@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Send</title>
     <link rel="stylesheet" property="stylesheet" type="text/css" href="css/stylesheet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
     <?php
@@ -17,37 +18,39 @@
     $mysqli = new mysqli($host, $user, $pwd, $db);
     $navigation = <<<END
     <nav class="topnav">
-        <a href="tracker.php">TRACKER</a>
         <a href="index.php">HOME</a>
         <a href="about.php">ABOUT US</a>
-        <a href="register.php">REGISTER</a>
         <a href="contact.php">CONTACT</a>
-        <div class="search-container">
-            <form action="/action_page.php">
-                <input type="text" placeholder="Search.." name="search">
-                <button type="submit"><i class="fa fa-search"></i></button>
-            </form>
+END;
+if (isset($_SESSION['is_admin']) && $_SESSION['is_admin'] === '1') {
+    $navigation .= '<a href="analytics.php">ANALYTICS</a>';
+    $navigation .= '<a href="edit.php">MANAGE USERS</a>';
+    }
+    else {
+        if (!isset($_SESSION['user_id'])) {
+        $navigation .= <<<END
+        <a href="register.php">REGISTER</a>
+        <a href="login.php">LOG IN</a>
+        
+END;
+    }
+}
+if (isset($_SESSION['user_id']))
+{
+    $navigation .= <<<END
+    <div class="dropdown">
+        <button class="dropbtn">
+            <i class="fa fa-caret-down"></i>
+        </button>
+    <div class="dropdown-content">
+        <a href="myHealth.php">MY PAGE</a>
+        <a href="goal.php">MY GOALS</a>
+        <a href="tracker.php">TRACKER</a>
+        <a href="logout.php">SIGN OUT</a>
+        </div>
         </div>
 END;
-
-    if (isset($_SESSION['user_id']))
-    {
-        $navigation .= <<<END
-        <a href="logout.php">LOGOUT</a>
-        <a href="myHealth.php">MY PAGE</a>
-
-END;
-        if ($_SESSION['is_admin'] === '1') {
-            $navigation .= '';
-        }
-        $navigation .= 'Logged in as ' . $_SESSION['email'];
-    }
-    else
-    {
-        $navigation .= <<<END
-        <a href="login.php">LOG IN</a>
-END;
-    }
+}
     $navigation .= '</nav>';
     ?>
  <script>
