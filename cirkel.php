@@ -1,30 +1,25 @@
 <?php
-// Establish database connection
+
 $conn = new mysqli($host, $user, $pwd, $db);
 
-// Check connection
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-// Fetch data from the database
 $query = "SELECT browser, COUNT(*) as count FROM access_log GROUP BY browser";
 $result = $conn->query($query);
 
-// Store data in an array
+
 $data = array();
 while ($row = $result->fetch_assoc()) {
   $data[] = array($row['browser'], (int)$row['count']);
 }
 
-// Convert the data to a format compatible with Google Charts
 $data_json = json_encode($data);
 
-// Close the database connection
 $conn->close();
 ?>
 
-<!-- Display the chart using Google Charts -->
 <html>
 <head>
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>

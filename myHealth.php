@@ -18,12 +18,12 @@ echo $content;
     <h1 class="heading1">Steps progress</h1>
     <?php
     $conn = new mysqli($host, $user, $pwd, $db);
-    // Check connection
+
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $email = $_SESSION['email']; // assuming the user's email address is stored in a session variable
+    $email = $_SESSION['email']; 
     $user_query = "SELECT user_id FROM user WHERE email = '$email'";
     $result = mysqli_query($conn, $user_query);
     $row = mysqli_fetch_assoc($result);
@@ -40,7 +40,7 @@ echo $content;
     } else {
     echo "<tr><td colspan='1'>No goals added</td></tr><br>";
     }
-    // Get current steps
+
     $sql = "SELECT value FROM steps WHERE date = CURDATE() and user_id = $user_id";
     $result = mysqli_query($conn, $sql);
     if (mysqli_num_rows($result) > 0) {
@@ -62,12 +62,12 @@ echo $content;
     <h1 class="heading1">Walked progress</h1>
     <?php
     $conn = new mysqli($host, $user, $pwd, $db);
-    // Check connection
+
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $email = $_SESSION['email']; // assuming the user's email address is stored in a session variable
+    $email = $_SESSION['email']; 
     $user_query = "SELECT user_id FROM user WHERE email = '$email'";
     $result = mysqli_query($conn, $user_query);
     $row = mysqli_fetch_assoc($result);
@@ -83,7 +83,7 @@ echo $content;
     } else {
     echo "<tr><td colspan='1'>No goals added</td></tr><br>";
     }
-    // Get current steps
+
     $sql = "SELECT value FROM walked_distance WHERE date = CURDATE() and user_id = $user_id";
     $walkresult = mysqli_query($conn, $sql);
     if (mysqli_num_rows($walkresult) > 0) {
@@ -101,17 +101,18 @@ echo $content;
 
     mysqli_close($conn);    
     ?>
+    
 </div>
 <div class="box">
     <h1 class="heading1">Cycled progress</h1>
     <?php
     $conn = new mysqli($host, $user, $pwd, $db);
-    // Check connection
+
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $email = $_SESSION['email']; // assuming the user's email address is stored in a session variable
+    $email = $_SESSION['email']; 
     $user_query = "SELECT user_id FROM user WHERE email = '$email'";
     $result = mysqli_query($conn, $user_query);
     $row = mysqli_fetch_assoc($result);
@@ -127,7 +128,7 @@ echo $content;
     } else {
     echo "<tr><td colspan='1'>No goals added</td></tr><br>";
     }
-    // Get current steps
+
     $sql = "SELECT value FROM cycled_distance WHERE date = CURDATE() and user_id = $user_id";
     $cycledresult = mysqli_query($conn, $sql);
     if (mysqli_num_rows($cycledresult) > 0) {
@@ -149,19 +150,19 @@ echo $content;
     <h1 class="heading1">Sleeping progress</h1>
     <?php
     $conn = new mysqli($host, $user, $pwd, $db);
-    // Check connection
+
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $email = $_SESSION['email']; // assuming the user's email address is stored in a session variable
+    $email = $_SESSION['email']; 
     $user_query = "SELECT user_id FROM user WHERE email = '$email'";
     $result = mysqli_query($conn, $user_query);
     $row = mysqli_fetch_assoc($result);
     $user_id = $row['user_id'];
 
 
-    $sql = "SELECT value FROM goal WHERE goaltype_id = 9 and user_id = $user_id";
+    $sql = "SELECT value FROM goal WHERE goaltype_id = 6 and user_id = $user_id";
     $sleepresult = mysqli_query($conn, $sql);
     if (mysqli_num_rows($sleepresult) > 0) {
         while ($row = mysqli_fetch_assoc($sleepresult)) {
@@ -171,7 +172,7 @@ echo $content;
     } else {
     echo "<tr><td colspan='1'>No goals added</td></tr><br>";
     }
-    // Get current steps
+
     $sql = "SELECT value FROM sleeping_hours WHERE date = CURDATE() and user_id = $user_id";
     $sleepresult = mysqli_query($conn, $sql);
     if (mysqli_num_rows($sleepresult) > 0) {
@@ -193,12 +194,12 @@ echo $content;
     <h1 class="heading1">Weight progress</h1>
     <?php
     $conn = new mysqli($host, $user, $pwd, $db);
-    // Check connection
+
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $email = $_SESSION['email']; // assuming the user's email address is stored in a session variable
+    $email = $_SESSION['email']; 
     $user_query = "SELECT user_id FROM user WHERE email = '$email'";
     $result = mysqli_query($conn, $user_query);
     $row = mysqli_fetch_assoc($result);
@@ -214,7 +215,7 @@ echo $content;
     } else {
     echo "<tr><td colspan='1'>No data found</td></tr><br>";
     }
-    // Get current steps
+
     $sql = "SELECT value FROM weight WHERE date = CURDATE() and user_id = $user_id";
     $weightresult = mysqli_query($conn, $sql);
     if (mysqli_num_rows($weightresult) > 0) {
@@ -236,12 +237,12 @@ echo $content;
     <h1 class="heading1">Calorie progress</h1>
     <?php
     $conn = new mysqli($host, $user, $pwd, $db);
-    // Check connection
+
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $email = $_SESSION['email']; // assuming the user's email address is stored in a session variable
+    $email = $_SESSION['email']; 
     $user_query = "SELECT user_id FROM user WHERE email = '$email'";
     $result = mysqli_query($conn, $user_query);
     $row = mysqli_fetch_assoc($result);
@@ -257,7 +258,7 @@ echo $content;
     } else {
     echo "<tr><td colspan='1'>No data found</td></tr><br>";
     }
-    // Get current steps
+
     $sql = "SELECT value FROM calorie WHERE date = CURDATE() and user_id = $user_id";
     $calorieresult = mysqli_query($conn, $sql);
     if (mysqli_num_rows($calorieresult) > 0) {
@@ -279,12 +280,12 @@ echo $content;
     <h1 class="heading1">Wake up progress</h1>
     <?php
     $conn = new mysqli($host, $user, $pwd, $db);
-    // Check connection
+
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $email = $_SESSION['email']; // assuming the user's email address is stored in a session variable
+    $email = $_SESSION['email']; 
     $user_query = "SELECT user_id FROM user WHERE email = '$email'";
     $result = mysqli_query($conn, $user_query);
     $row = mysqli_fetch_assoc($result);
@@ -300,7 +301,7 @@ echo $content;
     } else {
     echo "<tr><td colspan='1'>No data found</td></tr><br>";
     }
-    // Get current steps
+
     $sql = "SELECT value FROM get_up_time WHERE date = CURDATE() and user_id = $user_id";
     $getupresult = mysqli_query($conn, $sql);
     if (mysqli_num_rows($getupresult) > 0) {
@@ -322,12 +323,12 @@ echo $content;
     <h1 class="heading1">Bedtime progress</h1>
     <?php
     $conn = new mysqli($host, $user, $pwd, $db);
-    // Check connection
+
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $email = $_SESSION['email']; // assuming the user's email address is stored in a session variable
+    $email = $_SESSION['email']; 
     $user_query = "SELECT user_id FROM user WHERE email = '$email'";
     $result = mysqli_query($conn, $user_query);
     $row = mysqli_fetch_assoc($result);
@@ -343,7 +344,7 @@ echo $content;
     } else {
     echo "<tr><td colspan='1'>No data found</td></tr><br>";
     }
-    // Get current steps
+
     $sql = "SELECT value FROM bedtime WHERE date = CURDATE() and user_id = $user_id";
     $bedresult = mysqli_query($conn, $sql);
     if (mysqli_num_rows($bedresult) > 0) {
@@ -365,12 +366,12 @@ echo $content;
     <h1 class="heading1">Daytime naps</h1>
     <?php
     $conn = new mysqli($host, $user, $pwd, $db);
-    // Check connection
+
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $email = $_SESSION['email']; // assuming the user's email address is stored in a session variable
+    $email = $_SESSION['email'];
     $user_query = "SELECT user_id FROM user WHERE email = '$email'";
     $result = mysqli_query($conn, $user_query);
     $row = mysqli_fetch_assoc($result);
@@ -386,6 +387,162 @@ echo $content;
     mysqli_close($conn);
 ?>
 </div>
+<div>
+    <canvas id="lineChart"></canvas>
+</div>
+<!-- Include the Chart.js library -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+   <?php
+$conn = new mysqli($host, $user, $pwd, $db);
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Array för att lagra labels och data
+$labels = array();
+$data_steps = array();
+$data_distance = array();
+$data_cycled_distance = array();
+$data_calorie = array();
+$data_bedtime = array();
+$data_daytime_naps = array();
+$data_get_up_time = array();
+$data_sleeping_hours = array();
+$data_weight = array();
+
+// Funktion för att hämta data från en specifik tabell
+function fetchData($conn, $table, &$labels, &$data) {
+    $sql = "SELECT date, value FROM $table ORDER BY date ASC";
+    $result = $conn->query($sql);
+
+    while ($row = $result->fetch_assoc()) {
+        $date = $row['date'];
+        $value = intval($row['value']);
+
+        if (isset($labels[$date])) {
+            $labels[$date][$table] = $value;
+        } else {
+            $labels[$date] = array($table => $value);
+        }
+    }
+}
+
+// Hämta data från varje tabell
+fetchData($conn, 'steps', $labels, $data_steps);
+fetchData($conn, 'walked_distance', $labels, $data_distance);
+fetchData($conn, 'cycled_distance', $labels, $data_cycled_distance);
+fetchData($conn, 'calorie', $labels, $data_calorie);
+fetchData($conn, 'bedtime', $labels, $data_bedtime);
+fetchData($conn, 'daytime_naps', $labels, $data_daytime_naps);
+fetchData($conn, 'get_up_time', $labels, $data_get_up_time);
+fetchData($conn, 'sleeping_hours', $labels, $data_sleeping_hours);
+fetchData($conn, 'weight', $labels, $data_weight);
+
+// Sortera arrayn efter datum
+ksort($labels);
+
+foreach ($labels as $date => $values) {
+    $data_steps[] = isset($values['steps']) ? $values['steps'] : null;
+    $data_distance[] = isset($values['walked_distance']) ? $values['walked_distance'] : null;
+    $data_cycled_distance[] = isset($values['cycled_distance']) ? $values['cycled_distance'] : null;
+    $data_calorie[] = isset($values['calorie']) ? $values['calorie'] : null;
+    $data_bedtime[] = isset($values['bedtime']) ? $values['bedtime'] : null;
+    $data_daytime_naps[] = isset($values['daytime_naps']) ? $values['daytime_naps'] : null;
+    $data_get_up_time[] = isset($values['get_up_time']) ? $values['get_up_time'] : null;
+    $data_sleeping_hours[] = isset($values['sleeping_hours']) ? $values['sleeping_hours'] : null;
+    $data_weight[] = isset($values['weight']) ? $values['weight'] : null;
+}
+
+$conn->close();
+?>
+var chartData = {
+    labels: <?php echo json_encode(array_keys($labels)); ?>,
+    datasets: [
+        {
+            label: "Steps",
+            data: <?php echo json_encode($data_steps); ?>,
+            borderColor: "rgb(75, 192, 192)",
+            fill: false
+        },
+        {
+            label: "Distance",
+            data: <?php echo json_encode($data_distance); ?>,
+            borderColor: "rgb(192, 75, 75)",
+            fill: false
+        },
+        {
+            label: "Cycled Distance",
+            data: <?php echo json_encode($data_cycled_distance); ?>,
+            borderColor: "rgb(192, 192, 75)",
+            fill: false
+        },
+        {
+            label: "Calorie",
+            data: <?php echo json_encode($data_calorie); ?>,
+            borderColor: "rgb(75, 75, 192)",
+            fill: false
+        },
+        {
+            label: "Bedtime",
+            data: <?php echo json_encode($data_bedtime); ?>,
+            borderColor: "rgb(192, 75, 192)",
+            fill: false
+        },
+        {
+            label: "Daytime Naps",
+            data: <?php echo json_encode($data_daytime_naps); ?>,
+            borderColor: "rgb(75, 192, 75)",
+            fill: false
+        },
+        {
+            label: "Get Up Time",
+            data: <?php echo json_encode($data_get_up_time); ?>,
+            borderColor: "rgb(192, 75, 75)",
+            fill: false
+        },
+        {
+            label: "Sleeping Hours",
+            data: <?php echo json_encode($data_sleeping_hours); ?>,
+            borderColor: "rgb(75, 192, 192)",
+            fill: false
+        },
+        {
+            label: "Weight",
+            data: <?php echo json_encode($data_weight); ?>,
+            borderColor: "rgb(192, 75, 192)",
+            fill: false
+        }
+    ]
+};
+
+var ctx = document.getElementById('lineChart').getContext('2d');
+new Chart(ctx, {
+    type: 'line',
+    data: chartData,
+    options: {
+        responsive: true,
+        scales: {
+            y: {
+                beginAtZero: true,
+                title: {
+                    display: true,
+                    text: 'Value'
+                }
+            },
+            x: {
+                display: true,
+                title: {
+                    display: true,
+                    text: 'Date'
+                }
+            }
+        }
+    }
+});
+
+</script>
 <?php
 include('footer.php');
 ?>

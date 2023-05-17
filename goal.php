@@ -2,7 +2,7 @@
 include_once('template.php');
 include_once('accessLog.php');
 $conn = new mysqli($host, $user, $pwd, $db);
-// Check connection
+
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
@@ -11,7 +11,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $goal_type = $_POST['goal_type'];
     $goaltype_id = null;
 
-    // Find the goaltype_id for the selected goal type
     $stmt = $conn->prepare("SELECT goaltype_id FROM goaltype WHERE value = ?");
     if (!$stmt) {
         die("Error preparing SQL statement: " . $conn->error);
@@ -23,13 +22,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $goaltype_id = $row['goaltype_id'];
     }
 
-    $email = $_SESSION['email']; // assuming the user's email address is stored in a session variable
+    $email = $_SESSION['email']; 
     $user_query = "SELECT user_id FROM user WHERE email = '$email'";
     $result = mysqli_query($conn, $user_query);
     $row = mysqli_fetch_assoc($result);
     $user_id = $row['user_id'];
 
-    // Insert the new goal into the goal table
     $stmt = $conn->prepare("INSERT INTO goal (value, goaltype_id, user_id) VALUES (?, ?, ?) ON DUPLICATE KEY UPDATE value = ?");
     $stmt->bind_param("isii", $value, $goaltype_id, $user_id, $value);
     if ($stmt->execute()) {
@@ -79,18 +77,18 @@ echo $content;
         if (goalTypeSelect.value === "steps") {
             distanceInput.placeholder = "Steps";
         } else if (goalTypeSelect.value === "walked_distance") {
-            distanceInput.placeholder = "Walked distance";
+            distanceInput.placeholder = "Meters";
         } else if (goalTypeSelect.value === "cycled_distance") {
-            distanceInput.placeholder = "Cycled distance";
+            distanceInput.placeholder = "Meters";
         } else if (goalTypeSelect.value === "calorie") {
-            distanceInput.placeholder = "Calories";
-        } else if (goalTypeSelect.value === "Weight") {
-            distanceInput.placeholder = "kg";
+            distanceInput.placeholder = "Kcal";
+        } else if (goalTypeSelect.value === "weight") {
+            distanceInput.placeholder = "Kg";
         } else if (goalTypeSelect.value === "bedtime") {
             distanceInput.placeholder = "hh:mm:ss";
-        } else if (goalTypeSelect.value === "sleepingHours") {
+        } else if (goalTypeSelect.value === "sleeping_hours") {
             distanceInput.placeholder = "hh:mm:ss";
-        } else if (goalTypeSelect.value === "GetUpTime") {
+        } else if (goalTypeSelect.value === "get_up_time") {
             distanceInput.placeholder = "hh:mm:ss";
         }
     });

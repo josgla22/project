@@ -3,9 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Send</title>
+    <title id="pageTitle">Send</title>
     <link rel="stylesheet" property="stylesheet" type="text/css" href="css/stylesheet.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script>
+        // Hämta aktuell sida
+        var currentPage = window.location.pathname.split('/').pop().split('.')[0];
+
+        // Ändra titeln baserat på aktuell sida
+        switch (currentPage) {
+            case 'index':
+                document.getElementById('pageTitle').innerHTML = 'Home';
+                break;
+            case 'about':
+                document.getElementById('pageTitle').innerHTML = 'About us';
+                break;
+            case 'contact':
+                document.getElementById('pageTitle').innerHTML = 'Contact';
+                break;
+            case 'register':
+                document.getElementById('pageTitle').innerHTML = 'Register';
+                break;
+            case 'analytics':
+                document.getElementById('pageTitle').innerHTML = 'Analytics';
+                break;
+            case 'login':
+                document.getElementById('pageTitle').innerHTML = 'Log in';
+                break;
+            case 'edit':
+                document.getElementById('pageTitle').innerHTML = 'Manage Users';
+                break;
+            case 'about':
+                document.getElementById('pageTitle').innerHTML = 'About us';
+                break;
+            case 'myHealth':
+                document.getElementById('pageTitle').innerHTML = 'My page';
+                break;
+            case 'goal':
+                document.getElementById('pageTitle').innerHTML = 'My goals';
+                break;
+            case 'tracker':
+                document.getElementById('pageTitle').innerHTML = 'Activity tracker';
+                break;
+            case 'about':
+                document.getElementById('pageTitle').innerHTML = 'About us';
+                break;
+            // Lägg till fler fall för andra sidor
+            default:
+                // Om ingen matchning, behåll standardtiteln
+        }
+    </script>
 </head>
 <body>
     <?php
@@ -53,12 +100,3 @@ END;
 }
     $navigation .= '</nav>';
     ?>
- <script>
-    const form = document.getElementById('search-form');
-    form.addEventListener('submit', (event) => {
-        event.preventDefault(); // prevent the default form submission
-        const query = form.search.value; // get the search query from the input field
-          // send the search query to the server using fetch or XMLHttpRequest
-          // display the search results on the page
-    });
- </script>

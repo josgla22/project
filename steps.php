@@ -2,7 +2,7 @@
 include_once('template.php');
 include_once('accessLog.php');
 $conn = new mysqli($host, $user, $pwd, $db);
-// Check connection
+
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }

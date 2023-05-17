@@ -2,20 +2,15 @@
 include_once('template.php');
 $conn = new mysqli($host, $user, $pwd, $db);
 
-// Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Query to retrieve all users
 $query = "SELECT * FROM user";
 
-// Execute the query
 $result = $conn->query($query);
 
-// Check if there are any rows in the result set
 if ($result->num_rows > 0) {
-    // Loop through each row and display the user information
     $content = "<h1>MANAGE USERS</h1>";
     while ($row = $result->fetch_assoc()) {
         $content .= <<<END

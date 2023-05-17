@@ -14,7 +14,7 @@ END;
     }
 }
 if (isset($_POST['msg'])) {
-    $to = 'healtdashboard123453434234@hotmail.com'; // Enter your email address here
+    $to = 'healtdashboard123453434234@hotmail.com'; 
     $subject = 'Feedback from Health Dashboard';
     $message = "First name: {$_POST['fname']}\n";
     $message .= "Last name: {$_POST['lname']}\n";

@@ -2,7 +2,7 @@
 include_once('template.php');
 include_once('accessLog.php');
 $conn = new mysqli($host, $user, $pwd, $db);
-// Check connection
+
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
@@ -29,7 +29,7 @@ echo '<div class="box">';
     echo '<h1 class="heading1">Cycled distance</h1>';
     echo '<form method="post" action="cycled_distance.php">';
     echo '<input type="date" name="date"> ';
-        echo '<input type="text" name="Distance" placeholder="Distance"><br>';
+        echo '<input type="text" name="Distance" placeholder="Meters"><br>';
         echo '<input type="submit" value="Add Distance"> ';
         echo '<input type="reset" value="Reset">';
     echo '</form>';

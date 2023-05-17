@@ -1,12 +1,11 @@
 <?php
 $conn = new mysqli($host, $user, $pwd, $db);
 
-// Check connection
+
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Query to retrieve access log data
 $query = "SELECT ip_address, COUNT(*) as count, MAX(access_time) as last_access_time FROM access_log GROUP BY ip_address ORDER BY count DESC";
 $result = mysqli_query($conn, $query);
 

@@ -2,7 +2,7 @@
 include_once('template.php');
 include_once('accessLog.php');
 $conn = new mysqli($host, $user, $pwd, $db);
-// Check connection
+
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <h1 class="heading1">Walked distance</h1>
     <form method="post" action="walked_distance.php">
     <input type="date" name="date">
-    <input type="text" name="distance" placeholder="Kilometers"><br>
+    <input type="text" name="distance" placeholder="Meters"><br>
     <input type="submit" value="Add distance">
     <input type="reset" value="Reset">
     </form>
